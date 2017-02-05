@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile.theme-1.4.5.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+    <title>Page 2</title>
+</head>
+
+<body>
+<div data-role="page" id="page2" >
+    <div data-role="header">
+        <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+        <a href="index.html" class="ui-btn ui-btn-icon-left ui-icon-back">Back</a>
+        </div>
+        <h6>Page 2</h6>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right">
+            <a href="#" class="ui-btn ui-btn-icon-left ui-icon-info">Help</a>
+        </div>
+    </div>
+    <div data-role="main" class="ui-content">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search fruits..." data-inset="true">
+            <li><a href="#">Apple</a></li>
+            <li><a href="#">Banana</a></li>
+            <li><a href="#">Cherry</a></li>
+            <li><a href="#">Cranberry</a></li>
+            <li><a href="#">Grape</a></li>
+            <li><a href="#">Orange</a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/myjs.js"></script>
+
+<script>
+    //https://restcountries.eu/  https://restcountries.eu/rest/v1/currency/eur
+    $.getJSON("Json/myjson.json", function(result){
+        console.log(result);
+        $.each(result, function(i, field){
+            $("ul").append('<li class="ui-last-child"><a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">'+field.name+ '| ' + field.region+'</a></li>' );
+        });
+    });
+</script>
+</body>
+</html>

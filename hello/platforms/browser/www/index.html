@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css">
+        <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile.theme-1.4.5.css">
+        <!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div data-role="page" id="pagehome">
+            <div data-role="header">
+                <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+                    <a href="#panelmenu" class="ui-btn ui-btn-icon-left ui-icon-grid">Menu</a>
+                </div>
+                <h6>Hello App</h6>
+            </div>
+            <div data-role="main" class="ui-content">
+                <h1>Home page</h1>
+            </div>
+            <div data-role="panel" id="panelmenu">
+                <ul data-role="listview">
+                    <li><a href="#page">Home</a></li>
+                    <li><a href="#page1">Page1</a></li>
+                    <li><a href="#page2">Page2</a></li>
+                    <li><a href="showlistview.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="page1">
+            <div data-role="header">
+                <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+                    <a href="#pagehome" class="ui-btn ui-btn-icon-left ui-icon-back">Back</a>
+                </div>
+                <h6>Page 1</h6>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul id="showdatapage1" data-role="listview" data-filter="true" data-filter-placeholder="Search fruits..." data-inset="true">
+                    <li>
+                        <a href="#">page1</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="page2">
+            <div data-role="header">
+                <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+                    <a href="#pagehome" class="ui-btn ui-btn-icon-left ui-icon-back">Back</a>
+                </div>
+                <h6>Page 2</h6>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul data-role="listview" data-filter="true" data-filter-placeholder="Search fruits..." data-inset="true">
+                    <li><a href="#">page2</a></li>
+                    <li><a href="#">page2</a></li>
+                    <li><a href="#">page2</a></li>
+                    <li><a href="#">page2</a></li>
+                    <li><a href="#">page2</a></li>
+                    <li><a href="#">page2</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="page3">
+            <div data-role="header">
+                <div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-left">
+                    <a href="#pagehome" class="ui-btn ui-btn-icon-left ui-icon-back">Back</a>
+                </div>
+                <h6>Page 3</h6>
+            </div>
+            <div data-role="main" class="ui-content">
+                <p id="lbname"></p>
+                <p id="lbcapital">+++++</p>
+
+            </div>
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="jquery/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/myjs.js"></script>
+    <script>
+        $.getJSON('Json/myjson.json',function (result) {
+            console.log(result);
+            console.log(result[0].name);
+            console.log(result[0].age);
+            console.log(result.length);
+            for(var i=0 ; i<=result.length;i++)
+            {
+             $("#showdatapage1").append('<li><a href="#page3" onclick="filldetail(\''+result[i].capital+'\',\''+result[i].name+'\')">'+result[i].name+' , ' +result[i].region+"</a> </li>");
+            }
+        })
+
+        function filldetail(capital,name) {
+            $('#lbcapital').html('Capital: '+capital);
+            $('#lbname').html('Name: '+name);
+
+        }
+
+
+         var myyjson =[{id:11000,"title":"Love pro studio","shopname":"ນ ພອນ ","phonenumber":"59555555"},
+             {"title":"Love pro studio","shopname":"ນ ພອນ ","phonenumber":"59555555"},
+             {"title":"Love pro studio","shopname":"ນ ພອນ ","phonenumber":"59555555"}
+         ];
+        //github https://github.com/pigletkps/cordova-hello
+    </script>
+    </body>
+</html>

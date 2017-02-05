@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=yes">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Phone Book</title>
+    </head>
+    <body>
+        <div data-role="page" id="pagemain">
+           <div data-role="main" >
+            <center>
+               <img src="img/logolsb.png" width="60%">
+            </center>
+            <h2> Welcome to LSB Phone Book</h2>
+
+               <a href="pdf/l2CLI.pdf"><button> Contact </button></a>
+               <a href="#pageimport"><button> Import  </button></a>
+               <a href="#pagesearch"><button> Search  </button></a>
+               <a href="#localstoreage"><button> Local Storeage   </button></a>
+               <a href="tel:+856202374683">call this number</a>
+           </div>
+        </div>
+        <div data-role="page" id="pageimport">
+            <div data-role="header">
+                <a href="#pagemain" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+                <span class="ui-title">Import</span>
+            </div>
+            <div data-role="main" class="ui-content" >
+                <div class="ui-field-contain">
+                    <label for="lbname">Name: </label>
+                    <input type="text" id="lbname" placeholder="name..." value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="lbsurname">Surname:</label>
+                    <input type="text" id="lbsurname" placeholder="" value="">
+                </div>
+                <fieldset data-role="controlgroup">
+                    <legend>Gender</legend>
+                    <input name="lbgender" type="radio"  id="rbmale" value="ຊາຍ" checked="checked">
+                    <label for="rbmale">Male</label>
+                    <input name="lbgender" type="radio"  id="rbfemale" value="ຍິງ">
+                    <label for="rbfemale">Female</label>
+                </fieldset>
+                <div class="ui-field-contain">
+                    <label for="lbposition">Position: </label>
+                    <input type="text" id="lbposition" placeholder="" value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="divistion">Divistion: </label>
+                    <input type="text" id="divistion" placeholder="" value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="lbphone">Phone: </label>
+                    <input type="text" id="lbphone" placeholder="" value="">
+                </div>
+                <label for="departmant" class="select">Select Department</label>
+                <select name="select-choice-1" id="departmant">
+                    ?
+                </select>
+                <button onclick="getdatauser()"> Submit </button>
+            </div>
+        </div>
+        <div data-role="page" id="pageupdate">
+            <div data-role="header">
+                <a href="#pagemain" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+                <span class="ui-title">Import</span>
+            </div>
+            <div data-role="main" class="ui-content" >
+                <div class="ui-field-contain">
+                    <label for="ulbname">Name: </label>
+                    <input type="text" id="ulbname" placeholder="name..." value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="ulbsurname">Surname:</label>
+                    <input type="text" id="ulbsurname" placeholder="" value="">
+                </div>
+                <fieldset data-role="controlgroup">
+                    <legend>Gender</legend>
+                    <input name="ulbgender" type="radio"  id="urbmale" value="ຊ">
+                    <label for="urbmale">Male</label>
+                    <input name="ulbgender" type="radio"  id="urbfemale" value="ຍ">
+                    <label for="urbfemale">Female</label>
+                </fieldset>
+                <div class="ui-field-contain">
+                    <label for="ulbposition">Position: </label>
+                    <input type="text" id="ulbposition" placeholder="" value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="udivistion">Divistion: </label>
+                    <input type="text" id="udivistion" placeholder="" value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="ulbphone">Phone: </label>
+                    <input type="text" id="ulbphone" placeholder="" value="">
+                </div>
+                <label for="udepartmant" class="select">Select Department</label>
+                <select name="select-choice-1" id="udepartmant">
+                    ?
+                </select>
+                <button onclick="btedit()"> Edite </button>
+            </div>
+        </div>
+        <div data-role="page" id="pagesearch">
+            <div data-role="header">
+                <a href="#pagemain" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+                <span class="ui-title">Search</span>
+            </div>
+            <div data-role="main" class="ui-content"  >
+                <ul id="listdep" data-role="listview" data-filter="true" data-filter-placeholder="Search Departmant..." data-inset="true">
+
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="pageviewdep">
+            <div data-role="header">
+                <a href="#pagesearch" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+                <span class="ui-title">Search</span>
+            </div>
+            <div data-role="main" class="ui-content"  >
+                <ul id="listuser" data-role="listview" data-filter="true" data-filter-placeholder="Search User..." data-inset="true">
+
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="page" id="pagedetail">
+            <div data-role="header">
+                <a href="#pageviewdep" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+                <span class="ui-title">Detail</span>
+            </div>
+            <div data-role="main" class="ui-content"  >
+
+                <p id="showlbname"></p>
+                <p id="showlbsurname"></p>
+                <p id="showlbphone"> </p>
+                <p id="showemail"></p>
+                <p id="showgender"></p>
+                <p id="lbdev"></p>
+                <p id="lbpos"></p>
+                <p id="lbdivision"></p>
+                <a id="clickcall"><img src="images.png"></a>
+
+              <a id="clickcall2"><button>CALL</button></a>
+              <a href="#pageupdate" onclick="edituser()"><button>Edit</button></a>
+              <a href="#pageviewdep" onclick="deleteuser()"><button>Delete</button></a>
+            </div>
+        </div>
+
+        <div data-role="page" id="localstoreage">
+            <div data-role="header">
+                <a href="#pagemain" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+                <span class="ui-title">Local Storeage</span>
+            </div>
+            <div data-role="main" class="ui-content" >
+                <div class="ui-field-contain">
+                    <label for="lbkey">Key: </label>
+                    <input type="text" id="lbkey" placeholder="Key..." value="">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="lbvalue">Value:</label>
+                    <input type="text" id="lbvalue" placeholder="Value" value="">
+                </div>
+
+                <button onclick="addkeyvalue()"> Add </button>
+                <button onclick="readKeyValue()"> Read Key </button>
+                <button onclick="removekeyvalue()"> Remove Key </button>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="jquery/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

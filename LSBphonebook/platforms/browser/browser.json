@@ -1,0 +1,27 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "la.gov.lsb.it.lsbphonebook"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "la.gov.lsb.it.lsbphonebook"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "la.gov.lsb.it.lsbphonebook"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.2",
+        "cordova-plugin-compat": "1.0.0",
+        "cordova-plugin-geolocation": "2.3.0"
+    }
+}
